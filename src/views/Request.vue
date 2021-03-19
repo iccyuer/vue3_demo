@@ -2,6 +2,7 @@
     <div>
         <h2>request</h2>
         <button @click="getCookie">获取cookie</button>
+        <button @click="getCookie2">获取cookie2</button>
     </div>
 </template>
 
@@ -17,8 +18,19 @@ export default {
             })
         }
 
+        let getCookie2 = () => {
+            request.get('http://localhost:9998/getcookie2',
+            {
+                // baseURL: 'http://localhost:9998'
+            })
+            .then(res => {
+                console.log('res', res)
+            })
+        }
+
         return {
-            getCookie
+            getCookie,
+            getCookie2
         }
     }
 }
