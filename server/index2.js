@@ -33,9 +33,15 @@ app.all("*", function (req, res, next) {
 //   })
 
 app.get('/getcookie2', (req, res) => {
-
     res.cookie('rememberme2', '13432423', { maxAge: 900000, httpOnly: true })
     res.end('1234')
+})
+
+app.get('/getuser', (req, res) => {
+    console.log('req', req);
+    res.json({
+        name: '22'
+    })
 })
 
 app.listen(port, () => {
