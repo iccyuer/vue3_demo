@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>预约确认单</title>
+    <style>
+        body{
+            width: 960px;
+            margin: auto;
+        }
+        .inline-block{
+            display: inline-block;
+        }
+        .middle{
+            vertical-align: middle;
+        }
+        .center{
+            text-align: center;
+        }
+        .right{
+            text-align: right;
+        }
+        .img{
+            margin-left: 30px;
+            width: 120px;
+            height: 120px;
+        }
+        .line{
+            width: 800px;
+            margin: auto;
+            height: 0;
+            border-top: 2px dashed #999;
+            margin-top: 30px;
+        }
+        .bold{
+            font-weight: bold;
+            padding-left: 20px;
+        }
+        .pl20{
+            padding-left: 20px;
+        }
+        table{
+            border-collapse:collapse;
+            border-spacing:10px;
+            margin-top: 30px;
+        }
+        .table, .table td{
+            border:1px solid #999;
+        }
+        .operator tr,.parent tr{
+            width: 960px;
+        }
+        .operator td,.parent td{
+            width: 240px;
+        }
+        td{
+            height: 50px;
+        }
+        @page {
+            margin-bottom: 0mm;
+            margin-top: 0mm;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header inline-block">
+        <img class="middle img" src="https://hainangolffile.yunxiaoxin.net/2021/9466/QrH2ccCqsca3YMXKNuGlwuqQ.png" alt=""></img>
+        <div class="inline-block middle center" style="width: 800px;">
+            <h2>联合推广套餐预约确认单</h2>
+        </div> 
+    </div>
+    <div>
+        <div>日期：</div>
+        <div>预约编号：</div>
+    </div>
+    <table>
+        <tbody class="">
+            <tr>
+                <td>发件人</td>
+                <td></td>
+                <td>收件人</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>联系电话</td>
+                <td></td>
+                <td>联系人</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>电话</td>
+                <td></td>
+                <td>传真</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>电话</td>
+                <td></td>
+                <td>传真</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>预订信息</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" checked/>32323</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <% var list = _.sortBy(list, function(a,b) {%>
+        <% if(!!a.parentid) { %>
+            <% return 1 %>
+        <% } else { %>
+            <% return -1 %>
+        <% } %>
+    <% }) %>
+    <% _.each(list, function(item,key) { %>
+        <% if(!item.parentid){ %>
+        <div class="header inline-block">
+            <img class="middle img" src="https://hainangolffile.yunxiaoxin.net/2021/9466/QrH2ccCqsca3YMXKNuGlwuqQ.png" alt=""></img>
+            <div class="inline-block middle center" style="width: 800px;">
+                <h2>预约确认单</h2>
+                <h2>GOLF RESERVATION CONFIRMATION</h2>
+            </div> 
+        </div>
+        <div class="line"></div>
+        <table>
+            <tbody class="parent">
+                <tr>
+                    <td class="bold">发件方： </td>
+                    <td class="center">海南三亚鹿回头高尔夫球会</td>
+                    <td class="bold">下单日期Order form Date： </td>
+                    <td class="center"><%= item.tee_date %> <%= item.tee_time %></td>
+                </tr>
+                <tr>
+                    <td class="bold">联系电话Tel：</td>
+                    <td class="center">0898-88338888</td>
+                    <td class="bold">联系传真Fax：</td>
+                    <td class="center">0898-88288966</td>
+                </tr>
+                <tr>
+                    <td class="bold">预订单号Booking No.： </td>
+                    <td colspan="3" class="center"><%= item.booking_sn %></td>
+                </tr>
+                <tr>
+                    <td class="bold">开球日期Date of Play：</td>
+                    <td class="center"><%= item.tee_date %></td>
+                    <td class="bold">开球时间Time of Play：</td>
+                    <td class="center"><%= item.tee_time %></td>
+                </tr>
+                <tr>
+                    <td class="bold">开球地点Course：</td>
+                    <td class="center"><%= item.Field.short_name %></td>
+                    <td class="bold">预订人数Population：</td>
+                    <td class="center"><%= list.length %></td>
+                </tr>
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="bold">接件方：</td>
+                    <td colspan="3" class="center"><%= item.Field.name %></td>
+                </tr>
+                <tr>
+                    <td class="bold">联系电话Tel：</td>
+                    <td class="center"><%= item.Field.mobile %></td>
+                    <td class="bold">联系传真Fax：</td>
+                    <td class="center"><%= item.Field.fax %></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="line"></div>
+        <h3>预订单详情Booking the details：</h3>
+        <table class="table">
+            <thead>
+                <tr style="height: 40px;">
+                    <td class="bold" colspan="4">地点</td>
+                    <td class="bold" colspan="4">时间/Teetime</td>
+                    <td class="bold" colspan="4">洞数</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="width: 320px;" colspan="4" class="pl20"><%= item.Field.short_name %></td>
+                    <td style="width: 320px;" colspan="4" class="pl20"><%= item.tee_date %> <%= item.tee_time %></td>
+                    <td style="width: 320px;" colspan="4" class="pl20"><%= item.hole_type %></td>
+                </tr>
+                <tr>
+                    <td class="bold">预定备注BookNote：</td>
+                    <td colspan="11" class="pl20"><%= item.remark %></td>
+                </tr>
+                <tr>
+                    <td colspan="12" style="height: 50px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="bold" style="width: 240px;" colspan="3">下单人</td>
+                    <td style="width: 240px;" colspan="3" class="center"><%= item.fullname %></td>
+                    <td class="bold" style="width: 240px;" colspan="3">手机号</td>
+                    <td class="center" style="width: 240px;" colspan="3"><%= item.mobile %></td>
+                </tr>
+                <tr>
+                    <td class="bold" colspan="3">客人1</td>
+                    <td class="bold" colspan="3">客人2</td>
+                    <td class="bold" colspan="3">客人3</td>
+                    <td class="bold" colspan="3">客人4</td>
+                </tr>
+                <tr>
+                    <td class="pl20" style="width: 240px;" colspan="3"><%= list[0]&&list[0].fullname %></td>
+                    <td style="width: 240px;" colspan="3" class="pl20"><%= list[1]&&list[1].fullname %></td>
+                    <td class="pl20" style="width: 240px;" colspan="3"><%= list[2]&&list[2].fullname %></td>
+                    <td class="pl20" style="width: 240px;" colspan="3"><%= list[3]&&list[3].fullname %></td>
+                </tr>
+            </tbody>
+        </table>
+        <% } %>
+    <% }); %>
+    <!-- <% _.each(list, function(child,key1) { %> -->
+               
+    <!-- <% }); %> -->
+            
+    <div class="line"></div>
+    <table>
+        <tbody class="operator">
+            <tr>
+                <td class="bold">经办人／Operator：</td>
+                <td></td>
+                <td class="bold">制表日期／Date：</td>
+                <td class="center">
+                    <% var date = new Date() %>
+                    <%= date.getFullYear() %>-<%= date.getMonth()+1 %>-<%= date.getDate() %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
