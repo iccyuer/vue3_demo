@@ -3,7 +3,8 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/composition">composition</router-link> |
-    <router-link to="/request">request</router-link>
+    <router-link to="/request">request</router-link> |
+    <router-link to="/scoped">scoped</router-link>
   </div>
   <router-view/>
 </template>
@@ -29,4 +30,7 @@
     }
   }
 }
+// .hello{
+//     border: 2px solid red;
+// }
 </style>

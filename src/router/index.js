@@ -24,6 +24,11 @@ const routes = [
         path: '/request',
         name: 'Request',
         component: () => import('../views/Request.vue')
+    },
+    {
+        path: '/scoped',
+        name: 'Scoped',
+        component: () => import('../views/Scoped.vue')
     }
 ]
 

@@ -8,6 +8,8 @@
         body {
             width: 550px;
             margin: auto;
+            font-size: 12px;
+            line-height: 13px;
         }
         
         .inline-block {
@@ -28,8 +30,8 @@
         
         .img {
             margin-left: 80px;
-            width: 80px;
-            height: 80px;
+            width: 40px;
+            height: 40px;
         }
         
         .line {
@@ -52,7 +54,7 @@
         table {
             border-collapse: collapse;
             border-spacing: 10px;
-            margin-top: 30px;
+            /* margin-top: 30px; */
         }
         
         .table,
@@ -71,7 +73,7 @@
         }
         
         td {
-            height: 13.7mm;
+            height: 6mm;
         }
         
         @page {
@@ -81,7 +83,8 @@
         
         .hidden td {
             height: 0;
-            border: none;
+            border: 0;
+            padding: 0;
             border-spacing: 0;
         }
     </style>
@@ -94,7 +97,7 @@
             <h2>联合推广套餐预约确认单</h2>
         </div>
     </div>
-    <div style="height: 0;">
+    <div>
         <div class="inline-block" style="width:200px; padding-left: 30px;">
             日期：
             <%= dates %>
@@ -104,9 +107,9 @@
         </div>
     </div>
     <div style="position: relative;">
-        <table class="table parent">
+        <table class="table parent" >
             <tbody class="">
-                <tr style="visibility: hidden;" class="hidden">
+                <tr class="hidden" style="border-top: 1px solid white;">
                     <td></td>
                     <td></td>
                     <td></td>
@@ -185,37 +188,7 @@
                     <td colspan="48" class="center">预订信息</td>
                 </tr>
                 <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr>
-                <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr>
-                <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr>
-                <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr>
-                <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr>
-                <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr>
-                <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr>
-                <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr>
-                <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr>
-                <!-- <tr>
-                    <td colspan="48" class="center">预订信息</td>
-                </tr> -->
-                <tr>
-                    <td colspan="48">
+                    <td colspan="48" style="padding-left: 20px;">
                         单球抢购：
                         <input type="checkbox" <% if(fieldid=='1' ) { %>checked
                         <% } %> />鹿回头
@@ -226,7 +199,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="48">
+                    <td colspan="48" style="padding-left: 20px;">
                         联合推广：
                         <input type="checkbox" />两晚三球套餐
                         <input type="checkbox" checked/>三球套餐
@@ -336,10 +309,10 @@
                     <td colspan="11" class="center"></td>
                 </tr>
                 <tr>
-                    <td colspan="48">特殊要求：</td>
+                    <td colspan="48" style="padding-left: 20px;">特殊要求：</td>
                 </tr>
-                <tr>
-                    <td colspan="48">
+                <tr style="font-size: 12px;">
+                    <td colspan="48" style="padding-left: 10px;">
                         备注：<br> 1. 球会可以接受当天预订；一经预订成功，不得更改或取消。<br> 2. 本产品不设退款, 预订有效日期从2021年4月1日至2021年 10月31日前，逾期作废。<br> 3. 发送预定单至预订中心（订单上注明抢购码），各自确认回复预定，所有预定以书面确认回复为准。<br> 4. 套餐不含交通费用，客户自理。<br> 5. 以上套餐不可裸价或分拆分销售，一经发现有权暂停合作。<br> 6. 房间入住时间不得早于下午14:30，退房时间不得晚于中午12:00<br>                        7. 套餐使用说明：<br>
                         <div style="padding-left: 2em;">
                             1) 单球抢购球员前台登记需出示抢购码。<br> 2) 套餐必须为同一球员（前台登记需提供身份证）连续使用，原则上日期不得间隔，如遇特殊情况，间隔日期不长，可视情况给予安排，否则将按上述单一打球价格执行。<br> 3) 球员必须提前30分钟抵达球会办理登记手续，否则球会有权延迟客人的开球时间或取消当日打球资格，且费用不予退还。<br> 4) 打球者差点必须在40以下；避免慢打，请保持正常的打球速度。<br> 5) 球场出发员有权为客人配组直至成为4人一组。<br>                            6) 打球者必须使用球车并且雇佣球僮；服务球僮数量根据球会安排提供，可以安排一对二服务打球者必须遵守球场的服饰要求和球场规定。<br>
@@ -348,7 +321,7 @@
                 </tr>
             </tbody>
         </table>
-        <img style="position: absolute; right: 0; bottom:100px; width: 230px;" src="https://hainangolffile.yitiandi.net/2021/1/wpmcFYW4_odO1p8xTM6GBdFA.png" alt=""></img>
+        <img style="position: absolute; right: 0; bottom:60px; width: 150px;" src="https://hainangolffile.yitiandi.net/2021/1/wpmcFYW4_odO1p8xTM6GBdFA.png" alt=""></img>
     </div>
 </body>
 
