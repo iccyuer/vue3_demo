@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .machine_item{
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            background: rosybrown;
+            font-size: 14px;
+        }
+        td{
+            min-width: 100px;
+        }
+        table{
+            border-collapse: collapse;
+            border-spacing: 10px;
+        }
+        tr{
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="machine_list" id="machine_list">
+        <div class="machine_item">
+            <div>状态：正常</div>
+            <div>过去1小时算力</div>
+            <div>过去1小时过去拒绝数</div>
+            <div>过去24小时算力</div>
+            <div>过去24小时过期总算力</div>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>矿工</td>
+                <td>15分钟</td>
+                <td>24小时</td>
+                <td>拒绝率</td>
+                <td>组名</td>
+                <td>6.</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<script>
+
+
+    let machine_item = $('.machine_list > .machine_item').prop("outerHTML");
+    console.log('machine_item', machine_item);
+
+    let machine_list = $('.machine_list');
+    console.log('machine_list', machine_list);
+    for (let i = 0; i<10; i++) {
+        machine_list.append(machine_item);
+    }
+</script>
+</html>
