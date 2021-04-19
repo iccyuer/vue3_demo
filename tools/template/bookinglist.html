@@ -5,191 +5,323 @@
     <meta charset="UTF-8">
     <title>预约确认单</title>
     <style>
-        body{
-            width: 960px;
+        body {
+            width: 500px;
             margin: auto;
+            font-size: 10px;
+            line-height: 13px;
         }
-        .inline-block{
+        
+        .inline-block {
             display: inline-block;
         }
-        .middle{
+        
+        .middle {
             vertical-align: middle;
         }
-        .center{
+        
+        .center {
             text-align: center;
         }
-        .right{
+        
+        .right {
             text-align: right;
         }
-        .img{
-            margin-left: 30px;
-            width: 120px;
-            height: 120px;
+        
+        .img {
+            margin-left: 80px;
+            width: 40px;
+            height: 40px;
         }
-        .line{
+        
+        .line {
             width: 800px;
             margin: auto;
             height: 0;
             border-top: 2px dashed #999;
             margin-top: 30px;
         }
-        .bold{
+        
+        .bold {
             font-weight: bold;
             padding-left: 20px;
         }
-        .pl20{
+        
+        .pl20 {
             padding-left: 20px;
         }
-        table{
-            border-collapse:collapse;
-            border-spacing:10px;
-            margin-top: 30px;
+        
+        table {
+            border-collapse: collapse;
+            border-spacing: 10px;
         }
-        .table, .table td{
-            border:1px solid #999;
+        
+        .table,
+        .table td {
+            border: 1px solid #999;
         }
-        .operator tr,.parent tr{
+        
+        .operator tr,
+        .parent tr {
             width: 960px;
         }
-        .operator td,.parent td{
-            width: 240px;
+        
+        .operator td,
+        .parent td {
+            width: 20px;
         }
-        td{
-            height: 50px;
+        
+        td {
+            height: 5.5mm;
         }
+        
         @page {
             margin-bottom: 0mm;
             margin-top: 0mm;
+        }
+        
+        .hidden td {
+            height: 0;
+            border: 0;
+            padding: 0;
+            border-spacing: 0;
         }
     </style>
 </head>
 
 <body>
-    <% var list = _.sortBy(list, function(a,b) {%>
-        <% if(!!a.parentid) { %>
-            <% return 1 %>
-        <% } else { %>
-            <% return -1 %>
-        <% } %>
-    <% }) %>
-    <% _.each(list, function(item,key) { %>
-        <% if(!item.parentid){ %>
-        <div class="header inline-block">
-            <img class="middle img" src="https://hainangolffile.yunxiaoxin.net/2021/9466/QrH2ccCqsca3YMXKNuGlwuqQ.png" alt=""></img>
-            <div class="inline-block middle center" style="width: 800px;">
-                <h2>预约确认单</h2>
-                <h2>GOLF RESERVATION CONFIRMATION</h2>
-            </div> 
+    <div class="header inline-block">
+        <img class="middle img" src="https://hainangolffile.yitiandi.net/2021/1/h8_rCgpEZn_b0JWcSehp6JhO.png" alt=""></img>
+        <div class="inline-block middle" style="width: 300px;padding-left: 30px;">
+            <h2>联合推广套餐预约确认单</h2>
         </div>
-        <div class="line"></div>
-        <table>
-            <tbody class="parent">
-                <tr>
-                    <td class="bold">发件方： </td>
-                    <td class="center">海南三亚鹿回头高尔夫球会</td>
-                    <td class="bold">下单日期Order form Date： </td>
-                    <td class="center"><%= item.tee_date %> <%= item.tee_time %></td>
+    </div>
+    <div>
+        <div class="inline-block" style="width:200px; padding-left: 30px;">
+            下单日期：
+            <%= created_at %>
+        </div>
+        <div class="inline-block" style="width:200px;">预约编号：
+            <%= prebooking_sn %>
+        </div>
+    </div>
+    <div style="position: relative;">
+        <table class="table parent">
+            <tbody class="">
+                <tr class="hidden" style="border-top: 1px solid white;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td class="bold">联系电话Tel：</td>
-                    <td class="center">0898-88338888</td>
-                    <td class="bold">联系传真Fax：</td>
-                    <td class="center">0898-88288966</td>
+                    <td colspan="6" class="center">发件人</td>
+                    <td colspan="18" class="center">北京世博天地高尔夫管理顾问有限公司</td>
+                    <td colspan="6" class="center">收件人</td>
+                    <td colspan="18" class="center">
+                        <%= fieldname %>高尔夫球会</td>
                 </tr>
                 <tr>
-                    <td class="bold">预订单号Booking No.： </td>
-                    <td colspan="3" class="center"><%= item.booking_sn %></td>
+                    <td colspan="6" class="center">联系电话</td>
+                    <td colspan="18" class="center">杨帆</td>
+                    <td colspan="6" class="center">联系人</td>
+                    <td colspan="18" class="center">预定中心</td>
                 </tr>
                 <tr>
-                    <td class="bold">开球日期Date of Play：</td>
-                    <td class="center"><%= item.tee_date %></td>
-                    <td class="bold">开球时间Time of Play：</td>
-                    <td class="center"><%= item.tee_time %></td>
+                    <td colspan="6" class="center">电话</td>
+                    <td colspan="18" class="center">18500436321</td>
+                    <td colspan="6" class="center">电话</td>
+                    <td colspan="18" class="center">0898-88338888</td>
                 </tr>
                 <tr>
-                    <td class="bold">开球地点Course：</td>
-                    <td class="center"><%= item.Field.short_name %></td>
-                    <td class="bold">预订人数Population：</td>
-                    <td class="center"><%= list.length %></td>
+                    <td colspan="6" class="center">传真</td>
+                    <td colspan="18" class="center">0316-3082795</td>
+                    <td colspan="6" class="center">传真</td>
+                    <td colspan="18" class="center">0898-88288966</td>
                 </tr>
                 <tr>
-                    <td colspan="4">&nbsp;</td>
+                    <td colspan="48" class="center">预订信息</td>
                 </tr>
                 <tr>
-                    <td class="bold">接件方：</td>
-                    <td colspan="3" class="center"><%= item.Field.name %></td>
+                    <td colspan="48" style="padding-left: 20px;">
+                        单球抢购：
+                        <input type="checkbox" <% if(fieldid=='1' ) { %>checked
+                        <% } %> />鹿回头
+                            <input type="checkbox" <% if(fieldid=='2' ) { %>checked
+                            <% } %> />海中海
+                                <input type="checkbox" <% if(fieldid=='3' ) { %>checked
+                                <% } %> />龙泉谷
+                    </td>
                 </tr>
                 <tr>
-                    <td class="bold">联系电话Tel：</td>
-                    <td class="center"><%= item.Field.mobile %></td>
-                    <td class="bold">联系传真Fax：</td>
-                    <td class="center"><%= item.Field.fax %></td>
+                    <td colspan="48" style="padding-left: 20px;">
+                        联合推广：
+                        <input type="checkbox" />两晚三球套餐
+                        <input type="checkbox" />三球套餐
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="24" class="center">套餐数量：
+                        <%= personnum %>
+                    </td>
+                    <td colspan="24" class="center">费用总额：
+                        <%= price/100 %>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="center">球员姓名</td>
+                    <td colspan="12" class="center">抢购码</td>
+                    <td colspan="24" class="center">证件号码</td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="center">
+                        <%= fullname1 %>
+                    </td>
+                    <td colspan="12" class="center">
+                        <%= consume_code1 %>
+                    </td>
+                    <td colspan="24" class="center">
+                        <%= idcard1 %>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="center">
+                        <%= fullname2 || '' %>
+                    </td>
+                    <td colspan="12" class="center">
+                        <%= consume_code2 %>
+                    </td>
+                    <td colspan="24" class="center">
+                        <%= idcard2 %>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="center">
+                        <%= fullname3 %>
+                    </td>
+                    <td colspan="12" class="center">
+                        <%= consume_code3 %>
+                    </td>
+                    <td colspan="24" class="center">
+                        <%= idcard3 %>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="center">
+                        <%= fullname4 %>
+                    </td>
+                    <td colspan="12" class="center">
+                        <%= consume_code4 %>
+                    </td>
+                    <td colspan="24" class="center">
+                        <%= idcard4 %>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="center">球场名称</td>
+                    <td colspan="6" class="center">开球日期</td>
+                    <td colspan="12" class="center">开球时间</td>
+                    <td colspan="24" class="center">球场回复<%= field_confirm_time %></td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="center">
+                        <%= fieldname %>
+                    </td>
+                    <td colspan="6" class="center">
+                        <%= dates %>
+                    </td>
+                    <td colspan="12" class="center">
+                        <%= tee_time %>
+                    </td>
+                    <td colspan="24" class="center">
+                        <%= prebooking_remark1 %>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="center"></td>
+                    <td colspan="6" class="center"></td>
+                    <td colspan="12" class="center"></td>
+                    <td colspan="24" class="center"></td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="center"></td>
+                    <td colspan="6" class="center"></td>
+                    <td colspan="12" class="center"></td>
+                    <td colspan="24" class="center"></td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="center">酒店名称</td>
+                    <td colspan="6" class="center">房间数量</td>
+                    <td colspan="6" class="center">房型</td>
+                    <td colspan="12" class="center">入住日期</td>
+                    <td colspan="12" class="center">退房日期</td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="center"></td>
+                    <td colspan="6" class="center"></td>
+                    <td colspan="6" class="center"></td>
+                    <td colspan="12" class="center"></td>
+                    <td colspan="12" class="center"></td>
+                </tr>
+                <tr>
+                    <td colspan="48" style="padding-left: 20px;">特殊要求：</td>
+                </tr>
+                <tr style="font-size: 9px;">
+                    <td colspan="48" style="padding: 5px 10px 5px 10px">
+                        备注：<br> 1. 球会可以接受当天预订；一经预订成功，前一天下午5:00后不可更改和取消。<br> 2. 本产品不设退款, 预订有效日期从2021年4月1日至2021年 10月31日前，逾期作废。<br> 3. 发送预定单至预订中心（订单上注明抢购码），各自确认回复预定，所有预定以书面确认回复为准。<br> 4. 套餐不含交通费用，客户自理。<br> 5. 以上套餐不可裸价或分拆分销售，一经发现有权暂停合作。<br> 6. 房间入住时间不得早于下午14:30，退房时间不得晚于中午12:00<br>                        7. 套餐使用说明：<br>
+                        <div style="padding-left: 2em;">
+                            1) 单球抢购球员前台登记需出示抢购码。<br> 2) 套餐必须为同一球员（前台登记需提供身份证）连续使用，原则上日期不得间隔，如遇特殊情况，间隔日期不长，可视情况给予安排，否则将按上述单一打球价格执行。<br> 3) 球员必须提前30分钟抵达球会办理登记手续，否则球会有权延迟客人的开球时间或取消当日打球资格，且费用不予退还。<br> 4) 打球者差点必须在40以下；避免慢打，请保持正常的打球速度。<br> 5) 球场出发员有权为客人配组直至成为4人一组。<br>                            6) 打球者必须使用球车并且雇佣球僮；服务球僮数量根据球会安排提供，可以安排一对二服务打球者必须遵守球场的服饰要求和球场规定。<br>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <div class="line"></div>
-        <h3>预订单详情Booking the details：</h3>
-        <table class="table">
-            <thead>
-                <tr style="height: 40px;">
-                    <td class="bold" colspan="4">地点</td>
-                    <td class="bold" colspan="4">时间/Teetime</td>
-                    <td class="bold" colspan="4">洞数</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="width: 320px;" colspan="4" class="pl20"><%= item.Field.short_name %></td>
-                    <td style="width: 320px;" colspan="4" class="pl20"><%= item.tee_date %> <%= item.tee_time %></td>
-                    <td style="width: 320px;" colspan="4" class="pl20"><%= item.hole_type %></td>
-                </tr>
-                <tr>
-                    <td class="bold">预定备注BookNote：</td>
-                    <td colspan="11" class="pl20"><%= item.remark %></td>
-                </tr>
-                <tr>
-                    <td colspan="12" style="height: 50px;">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="bold" style="width: 240px;" colspan="3">下单人</td>
-                    <td style="width: 240px;" colspan="3" class="center"><%= item.fullname %></td>
-                    <td class="bold" style="width: 240px;" colspan="3">手机号</td>
-                    <td class="center" style="width: 240px;" colspan="3"><%= item.mobile %></td>
-                </tr>
-                <tr>
-                    <td class="bold" colspan="3">客人1</td>
-                    <td class="bold" colspan="3">客人2</td>
-                    <td class="bold" colspan="3">客人3</td>
-                    <td class="bold" colspan="3">客人4</td>
-                </tr>
-                <tr>
-                    <td class="pl20" style="width: 240px;" colspan="3"><%= list[0]&&list[0].fullname %></td>
-                    <td style="width: 240px;" colspan="3" class="pl20"><%= list[1]&&list[1].fullname %></td>
-                    <td class="pl20" style="width: 240px;" colspan="3"><%= list[2]&&list[2].fullname %></td>
-                    <td class="pl20" style="width: 240px;" colspan="3"><%= list[3]&&list[3].fullname %></td>
-                </tr>
-            </tbody>
-        </table>
-        <% } %>
-    <% }); %>
-    <!-- <% _.each(list, function(child,key1) { %> -->
-               
-    <!-- <% }); %> -->
-            
-    <div class="line"></div>
-    <table>
-        <tbody class="operator">
-            <tr>
-                <td class="bold">经办人／Operator：</td>
-                <td></td>
-                <td class="bold">制表日期／Date：</td>
-                <td class="center">
-                    <% var date = new Date() %>
-                    <%= date.getFullYear() %>-<%= date.getMonth()+1 %>-<%= date.getDate() %>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <img style="position: absolute; right: 0; bottom:60px; width: 150px;" src="https://hainangolffile.yitiandi.net/2021/1/wpmcFYW4_odO1p8xTM6GBdFA.png" alt=""></img>
+    </div>
 </body>
 
 </html>

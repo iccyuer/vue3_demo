@@ -48,10 +48,10 @@ pdf.create(final_result,  {
     format: 'A4',
     "type": "pdf",
     "border": {
-        "top": "5mm", // default is 0, units: mm, cm, in, px
-        "right": "5mm",
-        "bottom": "5mm",
-        "left": "5mm"
+        "top": "15mm", // default is 0, units: mm, cm, in, px
+        "right": "15mm",
+        "bottom": "15mm",
+        "left": "15mm"
     },
 }).toFile('./prebooking.pdf', function(err, res) {
     if (err) return console.log(err);
