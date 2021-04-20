@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f9fd;
+        }
+
+        .weather {
+            border: 1px solid #2889fc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        .machine_list {
+            width: 2200px;
+        }
+
+        .machine_item {
+            display: inline-block;
+            width: 250px;
+            height: 220px;
+            border: 1px solid #2889fc;
+            background: #e9f3fe;
+            color: #34495e;
+            font-size: 14px;
+            padding-left: 10px;
+            vertical-align: middle;
+        }
+
+        .machine_item .header {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .machine_item .unit {
+            color: #8d9ea7;
+        }
+
+        .circle {
+            width: 5px;
+            height: 5px;
+            display: inline-block;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .offline {
+            background-color: #ff6565;
+        }
+
+        .online {
+            background-color: #17cac7;
+        }
+
+        .fault {
+            background-color: #8d9ea7;
+        }
+
+        .warning {
+            background-color: #FFECB3;
+        }
+
+        .inline-block {
+            display: inline-block;
+            width: 48%;
+            text-align: center;
+        }
+
+        td {
+            /* min-width: 100px; */
+            height: 50px;
+            padding: 10px 10px;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 10px;
+        }
+
+        tr {
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+        }
+
+        .toggle_btn {
+            position: fixed;
+            top: 5px;
+            right: 10px;
+            background-color: #c7e1fc;
+            padding: 2px 5px;
+            border-radius: 3px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weather"></div>
+    <!-- <div class="toggle_btn">切换</div> -->
+    <div class="machine_list" id="machine_list">
+        <!-- <div class="machine_item">
+            <div class="header">10x31x1x171</div>
+            <div>矿机算力: 76.94 <span class="unit">TH/s</span></div>
+            <div>过去1小时算力: 76.94 <span class="unit">TH/s</span></div>
+            <div>过去1小时过去拒绝数: 76.94 <span class="unit">TH/s</span></div>
+            <div>过去24小时算力: 76.94 <span class="unit">TH/s</span></div>
+            <div>过去24小时过期总算力: 76.94 <span class="unit">TH/s</span></div>
+            <div>最近提交Share时间:  2021-04-20 11:42</div>
+            <div>扩展字段: </div>
+        </div> -->
+    </div>
+    <table id="table" style="display: none;">
+        <thead>
+            <tr>
+                <td>位置</td>
+                <td>矿机名称</td>
+                <td>矿机算力</td>
+                <td>过去1小时算力</td>
+                <td>过去1小时过去拒绝数</td>
+                <td>过去24小时算力</td>
+                <td>过去24小时过期总算力</td>
+                <td>最近提交Share时间</td>
+                <td>扩展字段</td>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td>(0,0)</td>
+                <td>10x31x1x171</td>
+                <td>76.94</td>
+                <td>76.94</td>
+                <td>76.94</td>
+                <td>76.94</td>
+                <td>76.94</td>
+                <td>2021-04-20 11:42</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<script>
+    let maxCol = 10;
+    let maxRow = 10;
+
+    let machine_list_data = [
+        {
+            "id": 251,
+            "created_at": "2021-04-19 22:21:01",
+            "deleted_at": null,
+            "updated_at": "2021-04-19 22:26:59",
+            "name": "10x31x1x153",
+            "calc_power": 0,
+            "last_hour_calc_power": 0,
+            "last_hour_refuse": 0,
+            "last_24hour_calc_power": 618681998810021888,
+            "last_24over_calc_power": 1125899906842624,
+            "last_commit_time": "2021-04-19 10:55:00",
+            "extension": "0",
+            "worker_name": "10x31x1x153",
+            "row": 7,
+            "col": 3,
+            "room": "302"
+        },
+        {
+            "id": 242,
+            "created_at": "2021-04-19 22:21:01",
+            "deleted_at": null,
+            "updated_at": "2021-04-19 22:26:59",
+            "name": "10x31x1x133",
+            "calc_power": 0,
+            "last_hour_calc_power": 0,
+            "last_hour_refuse": 0,
+            "last_24hour_calc_power": 938437572353327104,
+            "last_24over_calc_power": 562949953421312,
+            "last_commit_time": "2021-04-19 10:56:00",
+            "extension": "0",
+            "worker_name": "10x31x1x133",
+            "row": 6,
+            "col": 2,
+            "room": "302"
+        }
+    ]
+
+    let renderList = [];
+    for (let i = 0; i < maxRow; i++) {
+        renderList.push([]);
+        for (let j = 0; j < maxCol; j++) {
+            renderList[i].push(undefined)
+        }
+    }
+
+    machine_list_data.map(machine => {
+        machine.calc_power_show = (machine.calc_power / 1000000000000).toFixed(2);
+        machine.last_hour_calc_power_show = (machine.last_hour_calc_power / 1000000000000).toFixed(2);
+        machine.last_24hour_calc_power_show = (machine.last_24hour_calc_power / 1000000000000).toFixed(2);
+        machine.last_24over_calc_power_show = (machine.last_24over_calc_power / 1000000000000).toFixed(2);
+        renderList[machine.row][machine.col] = machine;
+    })
+    console.log('renderList', renderList);
+
+    let machine_list = $('.machine_list');
+
+    renderList.map(row => {
+        row.map(col => {
+            let machine_item = ''
+            if (!!col) {
+                machine_item = `<div class="machine_item">
+                    <div class="header">${col.name}</div>
+                    <div>矿机算力: ${col.calc_power_show} <span class="unit">TH/s</span></div>
+                    <div>过去1小时算力: ${col.last_hour_calc_power_show} <span class="unit">TH/s</span></div>
+                    <div>过去1小时过去拒绝数: ${col.last_hour_refuse} <span class="unit">TH/s</span></div>
+                    <div>过去24小时算力: ${col.last_24hour_calc_power_show} <span class="unit">TH/s</span></div>
+                    <div>过去24小时过期总算力: ${col.last_24over_calc_power_show} <span class="unit">TH/s</span></div>
+                    <div>最近提交Share时间:  ${col.last_commit_time}</div>
+                    <div>扩展字段: ${col.extension}</div>
+                    <div>房间号: ${col.room}</div>
+                </div>`
+            } else {
+                machine_item = '<div class="machine_item"></div>'
+            }
+            machine_list.append(machine_item);
+        })
+    })
+
+    let tbody = $('#tbody');
+    machine_list_data.map(machine => {
+        tbody.append(`<tr>
+                <td>(${machine.row},${machine.col})</td>
+                <td>${machine.name}</td>
+                <td>${machine.calc_power}</td>
+                <td>${machine.last_hour_calc_power}</td>
+                <td>${machine.last_hour_refuse}</td>
+                <td>${machine.last_24hour_calc_power}</td>
+                <td>${machine.last_24over_calc_power}</td>
+                <td>${machine.last_commit_time}</td>
+                <td>${machine.extension}</td>
+            </tr>`)
+    })
+
+    let table = $('#table');
+    $('body').on('click', '.toggle_btn', function () {
+        if (table.is(':hidden')) {
+            table.show()
+            machine_list.hide()
+        } else {
+            table.hide();
+            machine_list.show()
+        }
+    })
+
+
+    let weather_data = [
+        {
+            "city": "二连浩特市",
+            "today_reporttime": "2021-04-20 16:30:40",
+            "today_desc": "今天白天天气阴, 风向南, 风力4, 夜晚天气阴, 风向南, 风力4, 温度7°到23°",
+            "today": {
+                "date": "2021-04-20",
+                "week": "2",
+                "dayweather": "阴",
+                "nightweather": "阴",
+                "daytemp": "23",
+                "nighttemp": "7",
+                "daywind": "南",
+                "nightwind": "南",
+                "daypower": "4",
+                "nightpower": "4"
+            },
+            "now": {
+                "province": "内蒙古",
+                "city": "二连浩特市",
+                "adcode": "152501",
+                "weather": "多云",
+                "temperature": "23",
+                "winddirection": "西南",
+                "windpower": "≤3",
+                "humidity": "9",
+                "reporttime": "2021-04-20 16:30:39"
+            },
+            "now_reporttime": "2021-04-20 16:30:39",
+            "now_desc": "当前天气多云, 气温23°, 风向西南, 风力≤3"
+        }, {
+            "city": "泸定县",
+            "today_reporttime": "2021-04-20 16:34:04",
+            "today_desc": "今天白天天气小雨, 风向东南, 风力≤3, 夜晚天气小雨, 风向东南, 风力≤3, 温度11°到22°",
+            "today": {
+                "date": "2021-04-20",
+                "week": "2",
+                "dayweather": "小雨",
+                "nightweather": "小雨",
+                "daytemp": "22",
+                "nighttemp": "11",
+                "daywind": "东南",
+                "nightwind": "东南",
+                "daypower": "≤3",
+                "nightpower": "≤3"
+            },
+            "now": {
+                "province": "四川",
+                "city": "泸定县",
+                "adcode": "513322",
+                "weather": "阴",
+                "temperature": "21",
+                "winddirection": "东南",
+                "windpower": "≤3",
+                "humidity": "29",
+                "reporttime": "2021-04-20 16:34:04"
+            },
+            "now_reporttime": "2021-04-20 16:34:04",
+            "now_desc": "当前天气阴, 气温21°, 风向东南, 风力≤3"
+        }
+    ]
+
+    function renderWeather(weather_data) {
+        if (!!weather_data && weather_data.length) {
+            let weather_box = $('.weather');
+            weather_data.map(weather => {
+                weather_box.append(`<div>
+                    ${weather.city}: ${weather.now_desc}
+                </div>`)
+            })
+        }
+    }
+
+    renderWeather(weather_data);
+
+</script>
+
+</html>

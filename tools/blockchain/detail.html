@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            min-width: 100px;
+            height: 50px;
+            padding: 10px 0;
+        }
+        table{
+            border-collapse: collapse;
+            border-spacing: 10px;
+        }
+        tr{
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+        }
+        .circle{
+            width: 5px;
+            height: 5px;
+            display: inline-block;
+            border-radius: 50%;
+            background: #ff6565;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>矿工</td>
+                <td>15分钟</td>
+                <td>24小时</td>
+                <td>拒绝率</td>
+                <td>组名</td>
+                <td>6.</td>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td><span class="circle"></span>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>汇总</td>
+                <td>5.08 PH/s</td>
+                <td>4.56 PH/s</td>
+                <td>0.03%</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<script>
+
+
+    function createTbody(list) {
+        if (!!list && list.length) {
+            let tbody = $('#tbody');
+            for (let i = 0; i < list.length; i++) {
+                let tr = `<tr>
+                    <td><span class="circle"></span>汇总</td>
+                    <td>5.08 PH/s</td>
+                    <td>4.56 PH/s</td>
+                    <td>0.03%</td>
+                    <td>${i}</td>
+                    <td>6</td>
+                </tr>`
+                    tbody.append(tr);
+            }
+        }
+    }
+
+    createTbody([1,2,3,4,5])    
+</script>
+</html>

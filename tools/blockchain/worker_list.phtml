@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body{
+            background-color: #f5f9fd;
+        }
+        .machine_list{
+            width: 2200px;
+        }
+        .machine_item{
+            display: inline-block;
+            width: 450px;
+            height: 250px;
+            border: 1px solid #2889fc;
+            background: #e9f3fe;
+            color: #34495e;
+            font-size: 14px;
+            padding-left: 10px;
+            vertical-align: middle;
+        }
+
+        .machine_item .header{
+            text-align: center;
+            font-weight: bold;
+        }
+        .machine_item .unit{
+            color: #8d9ea7;
+        }
+        .circle{
+            width: 5px;
+            height: 5px;
+            display: inline-block;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .offline{
+            background-color: #ff6565;
+        }
+        .online{
+            background-color: #17cac7;
+        }
+        .fault{
+            background-color: #8d9ea7;
+        }
+        .inline-block{
+            display: inline-block;
+            width: 48%;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="machine_list" id="machine_list">
+        <{foreach from=$data item=list}>
+        <div class="machine_item">
+            <div class="header">名称：<{$list->worker_name}></div>
+            <div>创建时间: <{$list->created_at }></div>
+            <div>算力: <{$list->calc_power }></div>
+            <div>过去一小时算力: <{if $list->last_hour_calc_power}><{$list->last_hour_calc_power}><{else}>0<{/if}> <span class="unit">TH/s</span></div>
+            <div>过去一小时过期算力: <{if $list->last_hour_refuse}><{$list->last_hour_refuse}><{else}>0<{/if}> <span class="unit">TH/s</span></div>
+            <div>过去24小时算力: <{if $list->last_24hour_calc_power}><{$list->last_24hour_calc_power}><{else}>0<{/if}> <span class="unit">TH/s</span></div>
+            <div>过去24小时过期算力: <{if $list->last_24over_calc_power}><{$list->last_24over_calc_power}><{else}>0<{/if}> <span class="unit">TH/s</span></div>
+            <div>最近提交Share时间: <{$list->last_commit_time }></div>
+        </div> 
+        <{/foreach}>
+    </div>
+</body>
+
+<script>
+
+</script>
+</html>

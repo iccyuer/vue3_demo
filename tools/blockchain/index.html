@@ -6,110 +6,166 @@
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
+        body{
+            background-color: #f5f9fd;
+        }
+        .machine_list{
+            width: 1100px;
+        }
         .machine_item{
             display: inline-block;
-            width: 150px;
-            height: 150px;
-            background: rosybrown;
+            width: 200px;
+            height: 100px;
+            border: 1px solid #2889fc;
+            background: #e9f3fe;
+            color: #34495e;
             font-size: 14px;
+            padding-left: 10px;
+            vertical-align: middle;
         }
-        td{
-            min-width: 100px;
+
+        .machine_item .header{
+            text-align: center;
+            font-weight: bold;
         }
-        table{
-            border-collapse: collapse;
-            border-spacing: 10px;
+        .machine_item .unit{
+            color: #8d9ea7;
         }
-        tr{
-            border-top: 1px solid red;
-            border-bottom: 1px solid red;
+        .circle{
+            width: 5px;
+            height: 5px;
+            display: inline-block;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 5px;
         }
+        .offline{
+            background-color: #ff6565;
+        }
+        .online{
+            background-color: #17cac7;
+        }
+        .fault{
+            background-color: #8d9ea7;
+        }
+        .inline-block{
+            display: inline-block;
+            width: 48%;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
+    <div>天气</div>
     <div class="machine_list" id="machine_list">
-        <div class="machine_item">
-            <div>状态：正常</div>
-            <div>过去1小时算力</div>
-            <div>过去1小时过去拒绝数</div>
-            <div>过去24小时算力</div>
-            <div>过去24小时过期总算力</div>
-        </div>
+        <!-- <div class="machine_item">
+            <div class="header">一号机柜</div>
+            <div>
+                <div class="inline-block">
+                    <span class="circle"></span><span>全部(123)</span>
+                </div>
+                <div class="inline-block">
+                    <span class="circle online"></span><span>在线(132)</span>
+                </div>
+            </div>
+            <div>
+                <div class="inline-block">
+                    <span class="circle offline"></span><span>离线(22)</span>
+                </div>
+                <div class="inline-block">
+                    <span class="circle fault"></span><span>失效(2)</span>
+                </div>
+            </div>
+            <div>过去1小时算力: 76.94 <span class="unit">TH/s</span></div>
+            <div>过去24小时算力: 76.94 <span class="unit">TH/s</span></div>
+        </div> -->
     </div>
-    <table>
-        <thead>
-            <tr>
-                <td>矿工</td>
-                <td>15分钟</td>
-                <td>24小时</td>
-                <td>拒绝率</td>
-                <td>组名</td>
-                <td>6.</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>汇总</td>
-                <td>5.08 PH/s</td>
-                <td>4.56 PH/s</td>
-                <td>0.03%</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>汇总</td>
-                <td>5.08 PH/s</td>
-                <td>4.56 PH/s</td>
-                <td>0.03%</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>汇总</td>
-                <td>5.08 PH/s</td>
-                <td>4.56 PH/s</td>
-                <td>0.03%</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>汇总</td>
-                <td>5.08 PH/s</td>
-                <td>4.56 PH/s</td>
-                <td>0.03%</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>汇总</td>
-                <td>5.08 PH/s</td>
-                <td>4.56 PH/s</td>
-                <td>0.03%</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>汇总</td>
-                <td>5.08 PH/s</td>
-                <td>4.56 PH/s</td>
-                <td>0.03%</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-        </tbody>
-    </table>
 </body>
 
 <script>
+    let maxCol = 5;
+    let maxRow = 10;
 
+    let machine_list_data = [
+        {
+            cabinet: '一号机柜',
+            row: 0,
+            col: 0,
+            last_hour_calc_power: '76.94',
+            last_24hour_calc_power: '76.94',
+            online: 172,
+            offline: 10,
+            fault: 1
+        },
+        {
+            cabinet: '三号机柜',
+            row: 3,
+            col: 2,
+            last_hour_calc_power: '76.94',
+            last_24hour_calc_power: '76.94',
+            online: 172,
+            offline: 10,
+            fault: 1
+        },
+        {
+            cabinet: '四号机柜',
+            row: 2,
+            col: 2,
+            last_hour_calc_power: '76.94',
+            last_24hour_calc_power: '76.94',
+            online: 172,
+            offline: 10,
+            fault: 1
+        }
+    ]
 
-    let machine_item = $('.machine_list > .machine_item').prop("outerHTML");
-    console.log('machine_item', machine_item);
+    let renderList = [];
+    for (let i = 0; i < maxRow; i++) {
+        renderList.push([]);
+        for (let j = 0; j < maxCol; j++) {
+            renderList[i].push(undefined)
+        }
+    }
+
+    machine_list_data.map(machine => {
+        renderList[machine.row][machine.col] = machine;
+    })
+    console.log('renderList', renderList);
 
     let machine_list = $('.machine_list');
-    console.log('machine_list', machine_list);
-    for (let i = 0; i<10; i++) {
-        machine_list.append(machine_item);
-    }
+
+    renderList.map(row => {
+        row.map(col => {
+            let machine_item = ''
+            if (!!col) {
+                machine_item = `<div class="machine_item">
+                    <div class="header">${col.cabinet}</div>
+                    <div>
+                        <div class="inline-block">
+                            <span class="circle"></span><span>全部(${col.online+col.offline})</span>
+                        </div>
+                        <div class="inline-block">
+                            <span class="circle online"></span><span>在线(${col.online})</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inline-block">
+                            <span class="circle offline"></span><span>离线(${col.offline})</span>
+                        </div>
+                        <div class="inline-block">
+                            <span class="circle fault"></span><span>失效(${col.fault})</span>
+                        </div>
+                    </div>
+                    <div>过去1小时算力: ${col.last_hour_calc_power} <span class="unit">TH/s</span></div>
+                    <div>过去24小时算力: ${col.last_24hour_calc_power} <span class="unit">TH/s</span></div>
+                </div>`
+            } else {
+                machine_item = '<div class="machine_item"></div>'
+            }
+            machine_list.append(machine_item);
+        })
+    })
+
 </script>
 </html>
