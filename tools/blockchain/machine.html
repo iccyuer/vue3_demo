@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/moment.js/2.24.0/moment.js"></script>
     <style>
         body {
             background-color: #f5f9fd;
@@ -32,6 +33,7 @@
             font-size: 14px;
             padding-left: 10px;
             vertical-align: middle;
+            cursor: pointer;
         }
 
         .machine_item .header {
@@ -104,7 +106,9 @@
 </head>
 
 <body>
-    <div class="weather"></div>
+    <div class="weather">
+        <div class="time"></div>
+    </div>
     <!-- <div class="toggle_btn">切换</div> -->
     <div class="machine_list" id="machine_list">
         <!-- <div class="machine_item">
@@ -204,6 +208,15 @@
         machine.last_hour_calc_power_show = (machine.last_hour_calc_power / 1000000000000).toFixed(2);
         machine.last_24hour_calc_power_show = (machine.last_24hour_calc_power / 1000000000000).toFixed(2);
         machine.last_24over_calc_power_show = (machine.last_24over_calc_power / 1000000000000).toFixed(2);
+        if (!machine.last_commit_time || (machine.last_commit_time && moment().subtract({ minutes: 20 }).isAfter(machine.last_commit_time, 'minutes'))) {
+            machine.type = 'offline';
+        } else {
+            if (machine.last_hour_calc_power_show > 50) {
+                machine.type = 'online';
+            } else {
+                machine.type = 'warning';
+            }
+        }
         renderList[machine.row][machine.col] = machine;
     })
     console.log('renderList', renderList);
@@ -214,7 +227,7 @@
         row.map(col => {
             let machine_item = ''
             if (!!col) {
-                machine_item = `<div class="machine_item">
+                machine_item = `<div class="machine_item ${col.type}">
                     <div class="header">${col.name}</div>
                     <div>矿机算力: ${col.calc_power_show} <span class="unit">TH/s</span></div>
                     <div>过去1小时算力: ${col.last_hour_calc_power_show} <span class="unit">TH/s</span></div>
@@ -230,6 +243,13 @@
             }
             machine_list.append(machine_item);
         })
+    })
+
+    $('.machine_list').on('mouseenter', '.machine_item', function() {
+        console.log('this', this);
+    })
+    $('.machine_list').on('mouseleave', '.machine_item', function() {
+        console.log('this', this);
     })
 
     let tbody = $('#tbody');
@@ -335,5 +355,40 @@
     renderWeather(weather_data);
 
 </script>
-
+<script>
+    let weather_box = $('.weather');
+    clearInterval()
+    let time_box = $('.time');
+    let timer = setInterval(function() {
+        time_box.html(`当前时间: ${moment().format('YYYY-MM-DD HH:mm:ss')}`)
+    }, 1000);
+    $.ajax({
+        url: '/monitor/getWeather?id=513322',
+        success: function (data) {
+            if (data.code == 0) {
+                weather_box.append(`<div>
+                    ${data.result.city}: ${data.result.now_desc}
+                </div>`)
+            }
+        },
+        error: function (data) {
+        },
+        type: "get",
+        dataType: "json"
+    })
+    $.ajax({
+        url: '/monitor/getWeather?id=152501',
+        success: function (data) {
+            if (data.code == 0) {
+                weather_box.append(`<div>
+                    ${data.result.city}: ${data.result.now_desc}
+                </div>`)
+            }
+        },
+        error: function (data) {
+        },
+        type: "get",
+        dataType: "json"
+    })
+</script>
 </html>
