@@ -102,12 +102,69 @@
             border-radius: 3px;
 
         }
+
+        .fixed_box {
+            position: fixed;
+            display: inline-block;
+            width: 250px;
+            height: 220px;
+            border: 1px solid #2889fc;
+            background: #e9f3fe;
+            color: #34495e;
+            font-size: 14px;
+            padding-left: 10px;
+            vertical-align: middle;
+            cursor: pointer;
+            box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.11);
+        }
+        .machine_list2{
+            width: 800px;
+        }
+        .machine_item2{
+            margin-right: 10px;
+            width: 48px;
+            height: 48px;
+            display: inline-block;
+            border: 1px solid #2889fc;
+            border-radius: 5px;
+            padding: 10px;
+        }
     </style>
 </head>
 
+
+
 <body>
+    <div class="machine_list2"></div>
+    <svg t="1619060334416" class="machine_item2 icon online_worker" data-x="2" data-y="3" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="2078" data-darkreader-inline-fill="" width="48" height="48">
+        <path
+            d="M615.56306173 905.53963457h124.27567408c22.91332741 0 41.42522469 18.51189728 41.42522469 41.42522468s-18.51189728 41.42522469-41.42522469 41.4252247H284.16126419c-22.91332741 0-41.42522469-18.51189728-41.42522469-41.4252247s18.51189728-41.42522469 41.42522469-41.42522468h103.56306173v-103.56306174H77.03514075c-45.69720098 0-82.85044939-37.15324839-82.85044939-82.85044936V159.88559013c0-45.69720098 37.15324839-82.85044939 82.85044939-82.85044938h869.9297185c45.69720098 0 82.85044939 37.15324839 82.85044939 82.85044938v559.24053334c0 45.69720098-37.15324839 82.85044939-82.85044939 82.85044936H615.56306173v103.56306174z m-41.4252247 0v-103.56306174H429.14955061v103.56306174h144.98828642zM77.03514075 159.88559013v559.24053334h869.9297185V159.88559013H77.03514075z"
+            fill="#67C23A" p-id="2079" style="--darkreader-inline-fill:#67C23A;" data-darkreader-inline-fill=""></path>
+        <path
+            d="M298.78954667 507.46911605l146.41227851-146.41227852c16.18172839-16.18172839 42.46085531-16.18172839 58.64258371 0s16.18172839 42.46085531 0 58.64258371l-146.41227852 146.28282468c-16.18172839 16.18172839-42.46085531 16.18172839-58.6425837 0s-16.18172839-42.46085531 0-58.51312987zM547.34089482 460.9951921l58.6425837-58.64258371c16.18172839-16.18172839 42.46085531-16.18172839 58.6425837 0s16.18172839 42.46085531 0 58.64258371l-58.6425837 58.64258371c-16.18172839 16.18172839-42.46085531 16.18172839-58.6425837 0-16.18172839-16.31118222-16.18172839-42.46085531 0-58.64258371z"
+            fill="#67C23A" p-id="2080" style="--darkreader-inline-fill:#67C23A;" data-darkreader-inline-fill=""></path>
+    </svg>
+    <svg t="1619060334416" class=" machine_item2 icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="2078" data-darkreader-inline-fill="" width="48" height="48">
+        <path
+            d="M615.56306173 905.53963457h124.27567408c22.91332741 0 41.42522469 18.51189728 41.42522469 41.42522468s-18.51189728 41.42522469-41.42522469 41.4252247H284.16126419c-22.91332741 0-41.42522469-18.51189728-41.42522469-41.4252247s18.51189728-41.42522469 41.42522469-41.42522468h103.56306173v-103.56306174H77.03514075c-45.69720098 0-82.85044939-37.15324839-82.85044939-82.85044936V159.88559013c0-45.69720098 37.15324839-82.85044939 82.85044939-82.85044938h869.9297185c45.69720098 0 82.85044939 37.15324839 82.85044939 82.85044938v559.24053334c0 45.69720098-37.15324839 82.85044939-82.85044939 82.85044936H615.56306173v103.56306174z m-41.4252247 0v-103.56306174H429.14955061v103.56306174h144.98828642zM77.03514075 159.88559013v559.24053334h869.9297185V159.88559013H77.03514075z"
+            fill="#E6A23C" p-id="2079" style="--darkreader-inline-fill:#E6A23C;" data-darkreader-inline-fill=""></path>
+        <path
+            d="M298.78954667 507.46911605l146.41227851-146.41227852c16.18172839-16.18172839 42.46085531-16.18172839 58.64258371 0s16.18172839 42.46085531 0 58.64258371l-146.41227852 146.28282468c-16.18172839 16.18172839-42.46085531 16.18172839-58.6425837 0s-16.18172839-42.46085531 0-58.51312987zM547.34089482 460.9951921l58.6425837-58.64258371c16.18172839-16.18172839 42.46085531-16.18172839 58.6425837 0s16.18172839 42.46085531 0 58.64258371l-58.6425837 58.64258371c-16.18172839 16.18172839-42.46085531 16.18172839-58.6425837 0-16.18172839-16.31118222-16.18172839-42.46085531 0-58.64258371z"
+            fill="#E6A23C" p-id="2080" style="--darkreader-inline-fill:#E6A23C;" data-darkreader-inline-fill=""></path>
+    </svg>
+    <svg t="1619060334416" class="machine_item2 icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="2078" data-darkreader-inline-fill="" width="48" height="48">
+        <path
+            d="M615.56306173 905.53963457h124.27567408c22.91332741 0 41.42522469 18.51189728 41.42522469 41.42522468s-18.51189728 41.42522469-41.42522469 41.4252247H284.16126419c-22.91332741 0-41.42522469-18.51189728-41.42522469-41.4252247s18.51189728-41.42522469 41.42522469-41.42522468h103.56306173v-103.56306174H77.03514075c-45.69720098 0-82.85044939-37.15324839-82.85044939-82.85044936V159.88559013c0-45.69720098 37.15324839-82.85044939 82.85044939-82.85044938h869.9297185c45.69720098 0 82.85044939 37.15324839 82.85044939 82.85044938v559.24053334c0 45.69720098-37.15324839 82.85044939-82.85044939 82.85044936H615.56306173v103.56306174z m-41.4252247 0v-103.56306174H429.14955061v103.56306174h144.98828642zM77.03514075 159.88559013v559.24053334h869.9297185V159.88559013H77.03514075z"
+            fill="#F56C6C" p-id="2079" style="--darkreader-inline-fill:#F56C6C;" data-darkreader-inline-fill=""></path>
+        <path
+            d="M298.78954667 507.46911605l146.41227851-146.41227852c16.18172839-16.18172839 42.46085531-16.18172839 58.64258371 0s16.18172839 42.46085531 0 58.64258371l-146.41227852 146.28282468c-16.18172839 16.18172839-42.46085531 16.18172839-58.6425837 0s-16.18172839-42.46085531 0-58.51312987zM547.34089482 460.9951921l58.6425837-58.64258371c16.18172839-16.18172839 42.46085531-16.18172839 58.6425837 0s16.18172839 42.46085531 0 58.64258371l-58.6425837 58.64258371c-16.18172839 16.18172839-42.46085531 16.18172839-58.6425837 0-16.18172839-16.31118222-16.18172839-42.46085531 0-58.64258371z"
+            fill="#F56C6C" p-id="2080" style="--darkreader-inline-fill:#F56C6C;" data-darkreader-inline-fill=""></path>
+    </svg>
     <div class="weather">
-        <div class="time"></div>
+        <div class="time" style="left: 0; top:0"></div>
     </div>
     <!-- <div class="toggle_btn">切换</div> -->
     <div class="machine_list" id="machine_list">
@@ -153,6 +210,13 @@
 </body>
 
 <script>
+    $('body').on('click', '.online_worker', function(e) {
+        console.log('e', e, this);
+        console.log('data', $(this).attr('data-x'))
+    })
+</script>
+
+<script>
     let maxCol = 10;
     let maxRow = 10;
 
@@ -186,7 +250,7 @@
             "last_hour_refuse": 0,
             "last_24hour_calc_power": 938437572353327104,
             "last_24over_calc_power": 562949953421312,
-            "last_commit_time": "2021-04-19 10:56:00",
+            "last_commit_time": "2021-04-22 11:56:00",
             "extension": "0",
             "worker_name": "10x31x1x133",
             "row": 6,
@@ -210,11 +274,14 @@
         machine.last_24over_calc_power_show = (machine.last_24over_calc_power / 1000000000000).toFixed(2);
         if (!machine.last_commit_time || (machine.last_commit_time && moment().subtract({ minutes: 20 }).isAfter(machine.last_commit_time, 'minutes'))) {
             machine.type = 'offline';
+            machine.color= '#F56C6C';
         } else {
             if (machine.last_hour_calc_power_show > 50) {
                 machine.type = 'online';
+                machine.color= '#67C23A';
             } else {
                 machine.type = 'warning';
+                machine.color= '#E6A23C';
             }
         }
         renderList[machine.row][machine.col] = machine;
@@ -222,10 +289,12 @@
     console.log('renderList', renderList);
 
     let machine_list = $('.machine_list');
+    let machine_list2 = $('.machine_list2');
 
     renderList.map(row => {
         row.map(col => {
             let machine_item = ''
+            let machine_item2 = ''
             if (!!col) {
                 machine_item = `<div class="machine_item ${col.type}">
                     <div class="header">${col.name}</div>
@@ -238,18 +307,77 @@
                     <div>扩展字段: ${col.extension}</div>
                     <div>房间号: ${col.room}</div>
                 </div>`
+                machine_item2 = 
+                '<svg t="1619060334416" class="machine_item2 icon" data-x="' + col.row + '"data-y="' + col.col +  '" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"'
+                    + 'p-id="2078" data-darkreader-inline-fill="" width="48" height="48">'
+                    + '<path '
+                        + 'd="M615.56306173 905.53963457h124.27567408c22.91332741 0 41.42522469 18.51189728 41.42522469 41.42522468s-18.51189728 41.42522469-41.42522469 41.4252247H284.16126419c-22.91332741 0-41.42522469-18.51189728-41.42522469-41.4252247s18.51189728-41.42522469 41.42522469-41.42522468h103.56306173v-103.56306174H77.03514075c-45.69720098 0-82.85044939-37.15324839-82.85044939-82.85044936V159.88559013c0-45.69720098 37.15324839-82.85044939 82.85044939-82.85044938h869.9297185c45.69720098 0 82.85044939 37.15324839 82.85044939 82.85044938v559.24053334c0 45.69720098-37.15324839 82.85044939-82.85044939 82.85044936H615.56306173v103.56306174z m-41.4252247 0v-103.56306174H429.14955061v103.56306174h144.98828642zM77.03514075 159.88559013v559.24053334h869.9297185V159.88559013H77.03514075z"'
+                        + 'fill="' + col.color + '" p-id="2079" style="--darkreader-inline-fill:#F56C6C;" data-darkreader-inline-fill=""></path>'
+                    + '<path '
+                        + 'd="M298.78954667 507.46911605l146.41227851-146.41227852c16.18172839-16.18172839 42.46085531-16.18172839 58.64258371 0s16.18172839 42.46085531 0 58.64258371l-146.41227852 146.28282468c-16.18172839 16.18172839-42.46085531 16.18172839-58.6425837 0s-16.18172839-42.46085531 0-58.51312987zM547.34089482 460.9951921l58.6425837-58.64258371c16.18172839-16.18172839 42.46085531-16.18172839 58.6425837 0s16.18172839 42.46085531 0 58.64258371l-58.6425837 58.64258371c-16.18172839 16.18172839-42.46085531 16.18172839-58.6425837 0-16.18172839-16.31118222-16.18172839-42.46085531 0-58.64258371z"'
+                        + 'fill="' + col.color + '" p-id="2080" style="--darkreader-inline-fill:#F56C6C;" data-darkreader-inline-fill=""></path>'
+                + '</svg>'
             } else {
                 machine_item = '<div class="machine_item"></div>'
+                machine_item2 = '<div class="machine_item2"></div>'
             }
             machine_list.append(machine_item);
+            machine_list2.append(machine_item2);
         })
     })
 
-    $('.machine_list').on('mouseenter', '.machine_item', function() {
-        console.log('this', this);
+
+    $('.machine_list2').on('mouseenter', '.machine_item2', function (event) {
+        let row = $(this).attr('data-x');
+        let col = $(this).attr('data-y');
+        if (!row || !col) return;
+        let woeker = renderList[row][col];
+        if (!!woeker) {
+            let top = event.originalEvent.y + 3;
+            let left = event.originalEvent.x;
+            let fixed_box = $('.fixed_box');
+            if (fixed_box.length > 0) {
+                if (fixed_box.css('display') == 'inline-block') return;
+                fixed_box.css({top: top + "px", left: left + "px", display: "inline-block"});
+            } else {
+                fixed_box = $('<div class="fixed_box"></div>');
+                fixed_box.css({top: top + "px", left: left + "px", display: "inline-block"});
+                $('body').append(fixed_box);
+            }
+            fixed_box.html('<div class="header">' + woeker.name + '</div>' +
+                    '<div>矿机算力: ' + woeker.calc_power_show + '<span class="unit">TH/s</span></div>' +
+                    '<div>过去1小时算力: '+ woeker.last_hour_calc_power_show + '<span class="unit">TH/s</span></div>' +
+                    '<div>过去1小时过去拒绝数: ' + woeker.last_hour_refuse + '</div>' +
+                    '<div>过去24小时算力: ' + woeker.last_24hour_calc_power_show + '<span class="unit">TH/s</span></div>' +
+                    '<div>过去24小时过期总算力: ' + woeker.last_24over_calc_power_show + '<span class="unit">TH/s</span></div>' +
+                    '<div>最近提交Share时间: ' + woeker.last_commit_time + '</div>' +
+                    '<div>扩展字段: ' + woeker.extension + '</div>' +
+                    '<div>房间号: ' + woeker.room + '</div>' +
+                    '<div>机柜名称: ' + (woeker.cabin || '新机柜') + '</div>'
+            )
+        }
+        
     })
-    $('.machine_list').on('mouseleave', '.machine_item', function() {
-        console.log('this', this);
+
+    $('.machine_list2').on('mouseleave', '.machine_item2', function (event) {
+        let fixed_box = $('.fixed_box');
+        if (fixed_box.length > 0) {
+            fixed_box.css({ display: "none"});
+        }
+    })
+
+    $('body').on('mouseenter', '.fixed_box', function() {
+        let fixed_box = $('.fixed_box');
+        if (fixed_box.length > 0 && fixed_box.css('display') == 'none') {
+            fixed_box.css({display: "inline-block"});
+        }
+    })
+
+    $('body').on('mouseleave', '.fixed_box', function() {
+        let fixed_box = $('.fixed_box');
+        if (fixed_box.length > 0) {
+            fixed_box.css({display: "none"});
+        }
     })
 
     let tbody = $('#tbody');
@@ -359,9 +487,15 @@
     let weather_box = $('.weather');
     clearInterval()
     let time_box = $('.time');
-    let timer = setInterval(function() {
+    let timer = setInterval(function () {
         time_box.html(`当前时间: ${moment().format('YYYY-MM-DD HH:mm:ss')}`)
     }, 1000);
+
+
+    $('.weather').on('click', '.time', function (e) {
+        console.log('e', e);
+    })
+
     $.ajax({
         url: '/monitor/getWeather?id=513322',
         success: function (data) {
@@ -390,5 +524,14 @@
         type: "get",
         dataType: "json"
     })
+
+
+    for (let i in filterConditions.brandAbbrMap) {
+        filterConditions.brandAbbrMap[i].map()
+        .allcheckedBrand = false; // 这个不好使就这样↓
+        this.#set(filterConditions.brandAbbrMap[i], 'allcheckedBrand', false)
+    }
+
 </script>
+
 </html>
