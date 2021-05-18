@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>预约确认单</title>
+    <style>
+        body {
+            width: 500px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 13px;
+        }
+        
+        .inline-block {
+            display: inline-block;
+        }
+        
+        .middle {
+            vertical-align: middle;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .right {
+            text-align: right;
+        }
+        
+        .line {
+            width: 500px;
+            margin: auto;
+            height: 0;
+            border-top: 2px dashed #999;
+        }
+        
+        .bold {
+            font-weight: bold;
+            /* padding-left: 20px; */
+        }
+        
+        @page {
+            margin-bottom: 0mm;
+            margin-top: 0mm;
+        }
+        .box_warpper{
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+        .item{
+            width: 50%;
+            display: inline-block;
+            margin: 7px 0;
+        }
+        .item2{
+            width: 50%;
+            align-self: flex-start;
+            -webkit-align-self: flex-start;
+            padding-top: 10px;
+            padding-left: 10px;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .item2:nth-child(2){
+            border-left: 1px solid red;
+        }
+        .item3{
+            padding-left: 10px;
+        }
+        .red{
+            color: red;
+        }
+        .header{
+            font-size: 30px;
+        }
+        .bb{
+            border-bottom: 1px solid red;  
+        }
+        .footer{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="red" style="text-align: center;">
+            <h2>呈&nbsp;&nbsp;&nbsp;&nbsp;批&nbsp;&nbsp;&nbsp;&nbsp;件</h2>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="box_warpper bb red">
+            <div class="item bold ">中国保利集团有限公司</div>
+            <div class="item red right">[2021]呈&nbsp;&nbsp;字&nbsp;第002号</div>
+        </div>
+        <div class="box_warpper bb" style="height: 80px;">
+            <div class="item3 red">题目：</div>
+            <div class="item3">更换领导测试</div>
+        </div>
+        <div class="box_warpper bb red" style="height: 80px;">
+            <div class="item2">xxx批示:</div>
+        </div>
+        <div class="box_warpper bb red" style="height: 80px;">
+            <div class="item2">xxx批示:</div>
+        </div>
+        <div class="box_warpper bb red" style="height: 80px;">
+            <div class="item2">xxx批示:</div>
+            <div class="item2">xxx批示:</div>
+        </div>
+        <div class="box_warpper bb red" style="height: 80px;">
+            <div class="item2">xxx批示:</div>
+            <div class="item2">xxx批示:</div>
+        </div>
+        <div class="box_warpper bb red" style="height: 80px;">
+            <div class="item2">xxx批示:</div>
+            <div class="item2">xxx批示:</div>
+        </div>
+        <div class="box_warpper bb red" style="height: 80px;">
+            <div class="item2">xxx批示:</div>
+            <div class="item2">xxx批示:</div>
+        </div>
+    </div>
+    <div class="footer red">
+        <div>主办部门意见：</div>
+    </div>
+</body>
+
+</html>

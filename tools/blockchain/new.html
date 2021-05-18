@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        *, :after, :before {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .news_tabbox {
+            margin: 20px 0;
+        }
+        article, aside, blockquote, body, button, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, section, td, textarea, th, ul {
+            margin: 0;
+            padding: 0;
+        }
+        .news_tabbox .tab_title {
+            margin: 0 20px 12px;
+        }
+        .news_tabbox .tab_title h2.active {
+            color: #0b69ef;
+            font-weight: 600;
+        }
+        .news_tabbox .tab_title h2 {
+            font-size: 18px;
+            color: #0b1721;
+            line-height: 25px;
+            display: inline-block;
+            margin-right: 25px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .news_tabbox .tab_content {
+            padding-bottom: 1px;
+            min-height: 1614px;
+            background: #fff;
+        }
+        .news_tabbox .tab_content .art_list nav {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            height: 152px;
+            margin: 0 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #edf1f6;
+        }
+        .news_tabbox .tab_content .art_list nav .pic {
+            width: 150px;
+            height: 112px;
+            overflow: hidden;
+            margin-right: 16px;
+        }
+        a, a:active, a:hover {
+            color: #0b69ef;
+        }
+        a {
+            background: transparent;
+            text-decoration: none;
+            outline: none;
+            cursor: pointer;
+            -webkit-transition: color 0s ease;
+            transition: color 0s ease;
+        }
+        .news_tabbox .tab_content .art_list nav img {
+            display: block;
+            width: 150px;
+            height: 112px;
+            overflow: hidden;
+        }
+        .scaleBig img {
+            -webkit-transition: all .7s;
+            transition: all .7s;
+        }
+        img {
+            border-style: none;
+        }
+        .news_tabbox .tab_content .art_list .info {
+            position: relative;
+            width: 700px;
+        }
+        .news_tabbox .tab_content .art_list .info .tit {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0b1721;
+            white-space: nowrap;
+            margin-bottom: 10px;
+            width: 600px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .news_tabbox .tab_content .art_list .info .preview {
+            font-size: 14px;
+            font-weight: 400;
+            color: #455058;
+            line-height: 22px;
+            width: 600px;
+            overflow: hidden;
+            display: block;
+        }
+        .news_tabbox .tab_content .art_list .info .time {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        .news_tabbox .tab_content .art_list .info .time {
+            color: #858a90;
+            position: absolute;
+            bottom: 0;
+        }
+        .news_tabbox .tab_content .art_list .info .time .name {
+            margin-right: 16px;
+            color: #858a90;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="news_tabbox" data-v-1804e940="">
+        <div class="tab_title" data-v-1804e940="">
+            <h2 class="" data-v-1804e940="">
+                头条
+            </h2>
+            <h2 data-v-1804e940="" class="">
+                新闻
+            </h2>
+            <h2 data-v-1804e940="" class="active">
+                政策
+            </h2>
+            <h2 data-v-1804e940="" class="">
+                活动
+            </h2>
+            <h2 data-v-1804e940="" class="">
+                技术
+            </h2>
+            <h2 data-v-1804e940="" class="">
+                区块链
+            </h2>
+            <h2 data-v-1804e940="" class="">
+                研究
+            </h2>
+            <h2 data-v-1804e940="" class="">
+                教程
+            </h2>
+            <h2 data-v-1804e940="" class="">
+                小号手
+            </h2>
+        </div>
+        <div class="tab_content">
+            <article class="art_list" data-v-1804e940="">
+                <nav class="scaleBig" data-v-1804e940="">
+                    <div class="pic" data-v-1804e940=""><a href="https://www.feixiaohao.com/news/9952497.html"
+                            target="_blank" style="display:block;" data-v-1804e940="" class=""><img
+                                src="https://s2.bqiapp.com/news/20210510/3A11DACC042D8D4C5ECEF71927456A5C5726.png?x-oss-process=image/resize,m_fill,h_144,w_192,limit_0/quality,q_50"
+                                alt="“以太坊市值将超比特币”？ 还有三个不确定因素" data-v-1804e940=""></a></div>
+                    <div class="info" data-v-1804e940=""><a href="https://www.feixiaohao.com/news/9952497.html"
+                            target="_blank" class="tit" style="display:block;" data-v-1804e940="">“以太坊市值将超比特币”？
+                            还有三个不确定因素</a> <a href="https://www.feixiaohao.com/news/9952497.html" target="_blank"
+                            class="preview" data-v-1804e940="">
+                            <div style="overflow:hidden;" data-v-1804e940=""><span
+                                    style="box-shadow:transparent 0 0;"><span
+                                        aria-label="ETH翻盘BTC存在的三个不确定性因素">ETH翻盘BTC存在的三个不确定性因素</span></span>
+                            </div>
+                        </a>
+                        <div class="time" data-v-1804e940=""> <span class="name name111" data-v-1804e940="">吴说区块链</span>
+                            <span data-v-1804e940="">11分钟前</span></div>
+                    </div>
+                </nav>
+            </article>
+        </div>
+    </div>
+</body>
+<script>
+    $('.news_tabbox > .tab_title').on('click', 'h2', function() {
+        $(this).addClass('active').siblings('h2').removeClass('active')
+    })
+</script>
+</html>
