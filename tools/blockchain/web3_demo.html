@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web3—demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+
+<body>
+    <script>
+        if (typeof web3 !== 'undefined') {
+            console.log('已经存在web3');
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            // web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+        // console.log('web3', web3);
+        // try {
+        //     web3.eth.getAccounts().then(res => {
+        //         console.log('res', res);
+        //     });
+        // } catch (err) {
+        //     console.log('err', err);
+        // }
+    </script>
+</body>
+
+</html>
