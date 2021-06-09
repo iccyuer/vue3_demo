@@ -10,6 +10,7 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 import { ref, onMounted, watch, computed } from "vue";
 import Web3 from "web3";
+import Tx from "ethereumjs-tx";
 
 export default {
 	name: "Home",
@@ -64,11 +65,72 @@ export default {
 					"http://localhost:8545"
 				);
 			}
-			let web3js = new Web3(web3Provider); //web3js就是你需要的web3实例
+            let web3 = new Web3(web3Provider); //web3就是你需要的web3实例
+            
 
-			web3js.eth.getAccounts(function (error, result) {
-				if (!error) console.log(result); //授权成功后result能正常获取到账号了
+            console.log('web3', web3);
+            console.log('accounts', web3.eth.accounts);
+
+
+			web3.eth.getAccounts(function (error, result) {
+				if (!error) console.log("acs", result); //授权成功后result能正常获取到账号了
 			});
+
+			// web3.eth.getGasPrice().then((result) => {
+			// 	console.log("wei: " + result);
+			// 	console.log("ether: " + web3.utils.fromWei(result, "ether"));
+			// });
+			let gas = await web3.eth.getGasPrice();
+
+			console.log("wei: " + gas);
+			console.log("ether: " + web3.utils.fromWei(gas, "gwei"));
+
+			// web3.eth
+			// 	.getAccounts()
+			// 	.then((accounts) => {
+			// 		return web3.eth.sendTransaction({
+			// 			from: accounts[0],
+			// 			to: "0xD5591343Daf628697B9b126d6819C2B7033A3F94",
+			// 			value: web3.utils.toHex(
+			// 				web3.utils.toWei("0.01", "ether")
+			// 			),
+			// 			gasLimit: web3.utils.toHex(21000),
+			// 			// gasPrice: web3.utils.toHex(
+			// 			// 	web3.utils.fromWei(gas, "gwei")
+			// 			// ),
+			// 			// gasPrice: 500
+			// 		});
+			// 	})
+			// 	.then(console.log)
+			// 	.catch(console.log);
+			// const account1 = "0xeb1fE8Fa8c605956742802FD5A5Ab601097E38CE"; // Your account address 1
+			// const account2 = "0xD5591343Daf628697B9b126d6819C2B7033A3F94"; // Your account address 2
+			// web3.eth.getTransactionCount(account1, (err, txCount) => {
+			// 	// 创建交易对象
+			// 	const txObject = {
+			// 		nonce: web3.utils.toHex(txCount),
+			// 		to: account2,
+			// 		value: web3.utils.toHex(web3.utils.toWei("0.1", "ether")),
+			// 		// gasLimit: web3.utils.toHex(21000),
+			// 		// gasPrice: web3.utils.toHex(web3.utils.toWei("10", "gwei")),
+			// 	};
+
+			// 	// 签署交易
+			// 	const tx = new Tx(txObject, {
+			// 		chain: "ropsten",
+			// 		hardfork: "petersburg",
+			// 	});
+			// 	tx.sign(privateKey1);
+
+			// 	const serializedTx = tx.serialize();
+			// 	const raw = "0x" + serializedTx.toString("hex");
+
+			// 	// 广播交易
+			// 	web3.eth.sendSignedTransaction(raw, (err, txHash) => {
+			// 		console.log("txHash:", txHash);
+			// 		// 可以去ropsten.etherscan.io查看交易详情
+			// 	});
+			// });
 		});
 	},
 };
