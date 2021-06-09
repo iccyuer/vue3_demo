@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<img alt="Vue logo" src="../assets/logo.png" />
+		<!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
 		<!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 	</div>
 </template>
@@ -11,6 +11,8 @@ import HelloWorld from "@/components/HelloWorld.vue";
 import { ref, onMounted, watch, computed } from "vue";
 import Web3 from "web3";
 import Tx from "ethereumjs-tx";
+console.log('Tx', Tx);
+console.log('Web3', Web3);
 
 export default {
 	name: "Home",
@@ -102,35 +104,38 @@ export default {
 			// 		});
 			// 	})
 			// 	.then(console.log)
-			// 	.catch(console.log);
-			// const account1 = "0xeb1fE8Fa8c605956742802FD5A5Ab601097E38CE"; // Your account address 1
-			// const account2 = "0xD5591343Daf628697B9b126d6819C2B7033A3F94"; // Your account address 2
-			// web3.eth.getTransactionCount(account1, (err, txCount) => {
-			// 	// 创建交易对象
-			// 	const txObject = {
-			// 		nonce: web3.utils.toHex(txCount),
-			// 		to: account2,
-			// 		value: web3.utils.toHex(web3.utils.toWei("0.1", "ether")),
-			// 		// gasLimit: web3.utils.toHex(21000),
-			// 		// gasPrice: web3.utils.toHex(web3.utils.toWei("10", "gwei")),
-			// 	};
+            // 	.catch(console.log);
+            
 
-			// 	// 签署交易
-			// 	const tx = new Tx(txObject, {
-			// 		chain: "ropsten",
-			// 		hardfork: "petersburg",
-			// 	});
-			// 	tx.sign(privateKey1);
+			const account1 = "0xeb1fE8Fa8c605956742802FD5A5Ab601097E38CE"; // Your account address 1
+            const account2 = "0xD5591343Daf628697B9b126d6819C2B7033A3F94"; // Your account address 2
+            const privateKey1 = Buffer.from('fe8039740138a400a309d0a8944eabc059ecb2bc7d83ac4749594a4bebe0449f', 'hex')
+			web3.eth.getTransactionCount(account1, (err, txCount) => {
+				// 创建交易对象
+				const txObject = {
+					nonce: web3.utils.toHex(txCount),
+					to: account2,
+					value: web3.utils.toHex(web3.utils.toWei("0.1", "ether")),
+					// gasLimit: web3.utils.toHex(21000),
+					// gasPrice: web3.utils.toHex(web3.utils.toWei("10", "gwei")),
+				};
 
-			// 	const serializedTx = tx.serialize();
-			// 	const raw = "0x" + serializedTx.toString("hex");
+				// 签署交易
+				const tx = new Tx(txObject, {
+					chain: "ropsten",
+					hardfork: "petersburg",
+				});
+				tx.sign(privateKey1);
 
-			// 	// 广播交易
-			// 	web3.eth.sendSignedTransaction(raw, (err, txHash) => {
-			// 		console.log("txHash:", txHash);
-			// 		// 可以去ropsten.etherscan.io查看交易详情
-			// 	});
-			// });
+				const serializedTx = tx.serialize();
+				const raw = "0x" + serializedTx.toString("hex");
+
+				// 广播交易
+				web3.eth.sendSignedTransaction(raw, (err, txHash) => {
+					console.log("txHash:", txHash);
+					// 可以去ropsten.etherscan.io查看交易详情
+				});
+			});
 		});
 	},
 };
