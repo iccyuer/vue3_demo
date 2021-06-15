@@ -4,6 +4,8 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 let provider = new HDWalletProvider(
     'fe8039740138a400a309d0a8944eabc059ecb2bc7d83ac4749594a4bebe0449f',
     'https://goerli.infura.io/v3/360b702766714dd49ff12864958d44f1'
+    // 'https://goerli.infura.io/'
+    // 'http://grpc.dwtv.tv:80/'
 ); 
 const web3 = new Web3(provider);
 
@@ -11,10 +13,10 @@ var abi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","typ
 var CoinContract = new web3.eth.Contract(abi, '0x2aC3c1d3e24b45c6C310534Bc2Dd84B5ed576335');
 
 let tragerAddress = [
-    "0xD5591343Daf628697B9b126d6819C2B7033A3F94",
+    // "0xD5591343Daf628697B9b126d6819C2B7033A3F94",
     "0x152db915FD2f51160C7f4Cb849Bb8a2748a7fc65"
 ]
-let amount = "10000000000000000";
+let amount = "10000000000000000"; // 1gbzz  16位
 
 let run = async () => {
     let accounts = await web3.eth.getAccounts();
@@ -28,12 +30,15 @@ let run = async () => {
             //     to: to,
             //     value: amount
             // })
-            let result = await CoinContract.methods.transfer(to, amount)
-            .send({ from: accounts[0]});
+            let result = await CoinContract.methods.transfer(to, amount).send({ from: accounts[0]});
 
             // console.log('result', result);
-            // console.log('result', result);
+            // console.log('result', result); 10000000000000000
             console.log(`success: ${accounts[0]} --> ${to}, amount: ${amount} transactionHash: ${result.transactionHash}`);
+            // 余额查询
+            let balance = await CoinContract.methods.balanceOf(to).call({ from: accounts[0]});
+            console.log(`${to} balance: ${balance}wei / ${balance/1e16.toFixed(0)}gbzz`);
+            // console.log('balance', balance);
         } catch(err) {
             // console.log('err', err);
             console.log(`error: ${accounts[0]} --> ${to}, amount: ${amount} ${err}`);
