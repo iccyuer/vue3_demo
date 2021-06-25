@@ -20,6 +20,15 @@ arrNet = []
 arrMsg = []
 acc = None
 
+# 取消
+def cancelFarOrder () :
+    orders = _C(exchange.GetOrders)
+    ticker = _C(exchange.GetTicker)
+    for i in range(len(orders)) : 
+        if abs(ticker.Sell - orders[i]["Price"]) > 10*distance and orders[i]["state"] == "pending" : 
+            cancelId = exchange.CancelOrder(orders[i]["Id"])
+            Log(cancelId, "取消", "#0000FF")
+
 def findOrder (orderId, NumOfTimes, ordersList = []) :
     for j in range(NumOfTimes) :
         orders = None
