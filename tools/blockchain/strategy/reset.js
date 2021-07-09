@@ -24,3 +24,22 @@ function main() {
         cancelPending();
     }
 }
+
+
+
+
+
+
+
+function getRecords() {
+    return _C(exchange.GetRecords, PERIOD_H1);
+}
+
+
+function main() {
+   
+   setInterval(() => {
+    getRecords()
+    Log(_D())
+   }, 1000*60*30);
+}
